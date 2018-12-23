@@ -36,6 +36,6 @@ App({
     globalData: {
         hasLogin: false,
         minAccountId: 1,
-        planBAccountIds: [82,111],
+        planBAccountIds: [1, 3],
     }
 });
