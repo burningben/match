@@ -165,8 +165,26 @@ Page({
           wx.getUserInfo({
             success: function(res) {
               console.log(res.userInfo)
-              var msg = '请加我的微信号（' + that.data.account.wechat_id + '）联系我～';
-              that.showModal(msg)
+              var msg = that.data.account.nick_name + ' 的微信号是: ' + that.data.account.wechat_id + '，复制并联系 TA ？';
+              wx.showModal({
+                content: msg,
+                confirmText: '复制',
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.setClipboardData({
+                      data: that.data.account.wechat_id,
+                      success (res) {
+                        wx.getClipboardData({
+                          success (res) {
+                            console.log(res.data)
+                          }
+                        })
+                      }
+                    })
+                  }
+                }
+              })
+
             }
           })
         } else {
