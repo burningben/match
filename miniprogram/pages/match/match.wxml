@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container" class="foot_blank">
+
+  <!-- 用户 图像 -->
+
+  <view class="swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="index">  
+        <swiper-item>  
+          <image src="{{item}}" class="slide-image" mode="aspectFill" />  
+        </swiper-item>  
+      </block>  
+    </swiper>  
+
+  </view>
+
+  <view>
+    <!-- <image src="../../../images/2_sansa.jpeg" mode='aspectFill'> -->
+    <!-- <image src="../../../images/{{account.id}}_{{account.nick_name}}.jpeg" mode='aspectFill'> -->
+    <!-- </image> -->
+  </view>
+
+  <view class="page__hd">
+      <view class="page__title">{{account.nick_name}}</view>
+      <view class="page__desc">{{account.short_info}}</view>
+  </view>
+
+  <block wx:for="{{account.list}}" wx:key="index">
+    <view class="page__hd">
+      <view class="page__title">{{item.title}}</view>
+      <block wx:if="{{item.type=='flex'}}">
+        <view wx:for="{{item.flex}}" wx:for-item="line" wx:key="index" class="weui-flex">
+          <view wx:for="{{line}}" wx:for-item="word" wx:key="index" class="weui-flex__item"><view class="placeholder">{{word}}</view></view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="page__desc">{{item.desc}}</view>
+      </block>
+      <view class="{{item.type=='flex' ? weui-flex__item : page__desc}}"></view>
+    </view>
+  </block>
+
+</view>
+
+<view class="control">
+    <image class="img" src="../../../images/close.png" bindtap="next" />
+    <image class="img" src="../../../images/like.png" bindtap="like"/>
+</view>
+
+<view class="signup">
+    <image class="img" src="../../../images/signup.png" bindtap="signup" />
+</view>

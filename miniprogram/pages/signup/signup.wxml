@@ -1,0 +1,254 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+    <form bindsubmit="formSubmit">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{topTips}}</view>
+
+        <view class="weui-cells__title">基本信息</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">我的昵称</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="nick_name" class="weui-input" placeholder="不少于4个字符"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">所在城市</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="city" class="weui-input" placeholder="如:深圳" />
+                </view>
+                <view class="weui-cell__ft">
+                    <!-- <view class="weui-vcode-btn">获取验证码</view> -->
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">微信号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="wechat_id" class="weui-input" placeholder="请输入微信id" />
+                </view>
+                <view class="weui-cell__ft">
+                    <!-- <view class="weui-vcode-btn">获取验证码</view> -->
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="phone" class="weui-input" placeholder="请输入手机号" />
+                </view>
+                <view class="weui-cell__ft">
+                    <!-- <view class="weui-vcode-btn">获取验证码</view> -->
+                </view>
+            </view>
+            <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">验证码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入验证码" />
+                </view>
+                <view class="weui-cell__ft">
+                    <image class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
+                </view>
+            </view> -->
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">生日</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker name="birth" mode="date" value="{{date}}" start="1950-01-01" end="2018-01-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">身高</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="height" bindchange="bindHeightChange" value="{{heightIndex}}" range="{{heightArray}}">
+                        <view class="picker"> {{heightArray[20]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">收入</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="income" bindchange="bindIncomeChange" value="{{incomeIndex}}" range="{{incomeArray}}">
+                        <view class="picker"> {{incomeArray[2]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">学历</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="education" bindchange="bindEducationChange" value="{{educationIndex}}" range="{{educationArray}}">
+                        <view class="picker"> {{educationArray[1]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">职业</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="profession" class="weui-input" placeholder="请输入职业"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">毕业学院</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="university" class="weui-input" placeholder="请输入毕业学院"/>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title">内心独白</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea name="say_something" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-cells__title">兴趣爱好</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea name="hobbies" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="weui-cells__title">择偶条件</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">年龄下限</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="age_min" bindchange="bindAgeMinChange" value="{{ageMinIndex}}" range="{{ageMinArray}}">
+                        <view class="picker"> {{ageMinArray[ageMinIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">年龄上限</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="age_max" bindchange="bindAgeMaxChange" value="{{ageMaxIndex}}" range="{{ageMaxArray}}">
+                        <view class="picker"> {{ageMaxArray[ageMaxIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">身高下限</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="height_min" bindchange="bindHeightMinChange" value="{{heightMinIndex}}" range="{{heightMinArray}}">
+                        <view class="picker"> {{heightMinArray[heightMinIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">身高上限</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="height_max" bindchange="bindHeightMaxChange" value="{{heightMaxIndex}}" range="{{heightMaxArray}}">
+                        <view class="picker"> {{heightMaxArray[heightMaxIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">收入</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="income_min" bindchange="bindIncomeRangeChange" value="{{incomeRangeIndex}}" range="{{incomeRangeArray}}">
+                        <view class="picker"> {{incomeRangeArray[incomeRangeIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">学历</view>
+                </view>
+                <view class="weui-cell__bd">
+                      <picker name="education_min" bindchange="bindEducationRangeChange" value="{{educationRangeIndex}}" range="{{educationRangeArray}}">
+                        <view class="picker"> {{educationRangeArray[educationRangeIndex]}} </view>
+                      </picker>
+                </view>
+            </view>
+
+        </view>
+
+        <view class="weui-cells__title">图片上传</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title"></view>
+                            <view class="weui-uploader__info">{{files.length}}/{{maxFiles}}</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image name="{{item}}" class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                            </view>
+                            <view wx:if="{{files.length < maxFiles}}" class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="page__bd">
+            <view class="weui-cells">
+            </view>
+        </view>
+
+
+        <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox bindchange="bindAgreeChange" name="agreement" class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" form-type="submit">提交</button>
+        </view>
+
+    </form>
+
+</view>

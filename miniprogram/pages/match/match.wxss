@@ -1,0 +1,55 @@
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #B5B5B5;
+}
+
+.page__hd {
+    padding:20px 0px 20px 0px;
+    border-style:solid;
+    border-width:0px 0px 1px 0px;
+    margin:0px 20px 0px 20px;
+    border-color:#ebebeb;
+}
+
+swiper {
+    height: 300px;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+}
+
+.control {
+    position: fixed;
+    bottom:3%;
+    display:flex;
+    margin:0 0 0 25%;
+    width:50%;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  margin: 5px auto;
+}
+
+.foot_blank {
+    margin-bottom: 25%;
+}
+
+.signup{
+    position:fixed;
+    top: 1%;
+    right: 2%;
+}
+
+.signup .img {
+  width: 30px;
+  height: 30px;
+}
