@@ -12,27 +12,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    wx.showModal({
-      content: 'msg',
-      // showCancel: false,
-      confirmText: '复制',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
 
-          wx.setClipboardData({
-            data: 'data on clipboard',
-            success (res) {
-              wx.getClipboardData({
-                success (res) {
-                  console.log(res.data) // data
-                }
-              })
-            }
-          })
-        }
-      }
-    })
   },
 
   /**

@@ -5,9 +5,9 @@ Page({
     data: {
         showTopTips: false,
         topTips: '',
-        incomeIndex: 0,
+        incomeIndex: 2,
         incomeArray: ['2K~6K', '6K~10W', '1W~1.5W', '1.5W~2W', '2W~5W', '5W以上'],
-        heightIndex: 0,
+        heightIndex: 20,
         heightArray: [],
         heightMinIndex: 0,
         heightMinArray: [],
@@ -21,7 +21,7 @@ Page({
         incomeRangeArray: ['不限', '2K以上', '6K以上', '1W以上', '1.5W以上', '2W以上', '5W以上'],
         educationRangeIndex: 0,
         educationRangeArray: ['不限','大专及以上','本科及以上','硕士及以上','博士及以上'],
-        educationIndex: 0,
+        educationIndex: 1,
         // educationArray: {'高中':'高中','本科':'本科','硕士':'硕士','博士':'博士'},
         educationArray: ['大专','本科','硕士','博士'],
 

@@ -43,10 +43,10 @@
 </view>
 
 <view class="control">
-    <image class="img" src="../../../images/close.png" bindtap="next" />
-    <image class="img" src="../../../images/like.png" bindtap="like"/>
+    <image class="img" src="../../images/close.png" bindtap="next" />
+    <image class="img" src="../../images/like.png" bindtap="like"/>
 </view>
 
 <view class="signup">
-    <image class="img" src="../../../images/signup.png" bindtap="signup" />
+    <image class="img" src="../../images/signup.png" bindtap="signup" />
 </view>

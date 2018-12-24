@@ -73,7 +73,7 @@
                 </view>
                 <view class="weui-cell__bd">
                       <picker name="height" bindchange="bindHeightChange" value="{{heightIndex}}" range="{{heightArray}}">
-                        <view class="picker"> {{heightArray[20]}} </view>
+                        <view class="picker"> {{heightArray[heightIndex]}} </view>
                       </picker>
                 </view>
             </view>
@@ -83,7 +83,7 @@
                 </view>
                 <view class="weui-cell__bd">
                       <picker name="income" bindchange="bindIncomeChange" value="{{incomeIndex}}" range="{{incomeArray}}">
-                        <view class="picker"> {{incomeArray[2]}} </view>
+                        <view class="picker"> {{incomeArray[incomeIndex]}} </view>
                       </picker>
                 </view>
             </view>
@@ -93,7 +93,7 @@
                 </view>
                 <view class="weui-cell__bd">
                       <picker name="education" bindchange="bindEducationChange" value="{{educationIndex}}" range="{{educationArray}}">
-                        <view class="picker"> {{educationArray[1]}} </view>
+                        <view class="picker"> {{educationArray[educationIndex]}} </view>
                       </picker>
                 </view>
             </view>
