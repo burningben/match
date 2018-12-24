@@ -130,6 +130,7 @@ Page({
     // body...
   },
   next: function () {
+    console.log('selected account:' + this.data.nextMatchAccountIds)
     db.collection('account').where({
       id : _.in(this.data.nextMatchAccountIds)
     }).get({
@@ -211,7 +212,7 @@ Page({
       this.setData({
         nextMatchAccountIds: [this.data.account_id]
       })
-      console.log(nextMatchAccountIds)
+      console.log('nextMatchAccountIds, this.data.account_id has value ' + this.data.nextMatchAccountIds)
       return
     }
     var randomPlanBAccountIdIndex = parseInt(Math.random()*(app.globalData.planBAccountIds.length),10)
@@ -221,21 +222,30 @@ Page({
         var randAccountIds = [
           // 从 app.globalData.minAccountId 到 max_account_id 之间随机取3个account id
           parseInt(Math.random()*(max_account.data.value-app.globalData.minAccountId+1)+app.globalData.minAccountId,10),
-          parseInt(Math.random()*(max_account.data.value-app.globalData.minAccountId+1)+app.globalData.minAccountId,10),
-          parseInt(Math.random()*(max_account.data.value-app.globalData.minAccountId+1)+app.globalData.minAccountId,10),
+          // parseInt(Math.random()*(max_account.data.value-app.globalData.minAccountId+1)+app.globalData.minAccountId,10),
+          // parseInt(Math.random()*(max_account.data.value-app.globalData.minAccountId+1)+app.globalData.minAccountId,10),
           app.globalData.planBAccountIds[randomPlanBAccountIdIndex],
         ]
 
         this.setData({
           nextMatchAccountIds: randAccountIds,
         })
-        
+        console.log('nextMatchAccountIds, random db ' + this.data.nextMatchAccountIds)
+        // 去重，与当前account id 不一致
+        for (var i = 0; i < this.data.nextMatchAccountIds.length; i++) {
+          if (this.data.nextMatchAccountIds[i] == this.data.account.id) {
+            console.log('remove account id ' + this.data.nextMatchAccountIds[i])
+            this.data.nextMatchAccountIds.splice(i, 1)
+          }
+        }      
       })
     } else {
         this.setData({
           nextMatchAccountIds: [app.globalData.planBAccountIds[randomPlanBAccountIdIndex]],
         })
+        console.log('nextMatchAccountIds, default account ' + this.data.nextMatchAccountIds)
     }
+
   }
 
 })

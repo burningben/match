@@ -225,7 +225,7 @@ Page({
         const messages = {
           nick_name: {
             required: '请填写昵称',
-            minlength:'请输入正确的昵称'
+            minlength:'请输入正确的昵称，至少4个字符'
           },
           wechat_id: {
             required: '请填写微信号',
@@ -237,19 +237,19 @@ Page({
           },
           profession: {
             required: '请填写职业',
-            minlength:'请输入正确的职业'
+            minlength:'请输入正确的职业，至少2个字符'
           },
           university: {
             required: '请填写毕业学院',
-            minlength:'请输入正确的毕业学院'
+            minlength:'请输入正确的毕业学院，至少4个字符'
           },
           hobbies: {
             required: '请填写兴趣爱好',
-            minlength:'请输入正确的兴趣爱好'
+            minlength:'请输入正确的兴趣爱好，至少4个字符'
           },
           say_something: {
             required: '请填写内心独白',
-            minlength:'请输入正确的内心独白'
+            minlength:'请输入正确的内心独白，至少4个字符'
           },
           phone:{
             required: '请填写手机号',
@@ -267,9 +267,6 @@ Page({
       },
     //调用验证函数
      formSubmit: function(e) {
-        wx.showLoading({
-          title: '提交中...',
-        })
         console.log('form发生了submit事件，携带的数据为：', e.detail.value)
         // console.log(this.data.isAgree)
         const params = e.detail.value
@@ -302,6 +299,10 @@ Page({
             }
         // 获取 max account id
         }).then(res => {
+            wx.showLoading({
+              title: '提交中...',
+            })
+
             db.collection('config').doc('max_account').get().then(max_account => {
 
                 console.log(max_account)
@@ -352,25 +353,30 @@ Page({
 
                           },
                           fail(res) {
+                            wx.hideLoading()
+                            wx.showModal({
+                              content: '提交失败',
+                              showCancel: false,
+                            })
                             console.log('add fail' + res)
                           }
                         })
                       }
                       uploadCount++
                     },
+                    fail(res) {
+                        wx.hideLoading()
+                        wx.showModal({
+                          content: '图片上传失败',
+                          showCancel: false,
+                        })
+                        console.log('images upload fail, res: ' + res)
+                    }
                   })
                   fileIndex++
                 }
 
             })
-        })
-        db.collection('config').doc('max_account').update({
-              data: {
-                value: _.inc(1)
-              },
-              success(res) {
-                console.log(res)
-              }
         })
 
       },
