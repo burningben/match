@@ -33,7 +33,7 @@ Page({
 
     db.collection('account').where({
       id : _.in(this.data.nextMatchAccountIds)
-    }).get({
+    }).orderBy('id', 'desc').get({
       success: res => {
         console.log(res)
         var data = res.data[0]
@@ -56,7 +56,8 @@ Page({
 
     var age = Math.floor((Math.round(new Date().getTime()/1000) - data.birth_time) / 31104000) + "岁"
     // console.log(age)
-    var short_info = [data.city, age, data.profession]
+    var astro = this.getAstro(data.birth_month, data.birth_day) 
+    var short_info = [data.city, age, astro + '座', data.profession] 
     // console.log(short_info)
 
     var education_map = {
@@ -137,7 +138,7 @@ Page({
     console.log('selected account:' + this.data.nextMatchAccountIds)
     db.collection('account').where({
       id : _.in(this.data.nextMatchAccountIds)
-    }).get({
+    }).orderBy('id', 'desc').get({
       success: res => {
         console.log(res)
         var data = res.data[0]
@@ -250,6 +251,10 @@ Page({
         console.log('nextMatchAccountIds, default account ' + this.data.nextMatchAccountIds)
     }
 
-  }
+  },
+  // 根据生日的月份和日期，计算星座。 
+  getAstro: function (m,d) { 
+      return "魔羯水瓶双鱼牡羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯".substr(m*2-(d<"102223444433".charAt(m-1)- -19)*2,2); 
+  } 
 
 })
