@@ -73,13 +73,18 @@ Page({
         data.spouse_condition.height_min + (data.spouse_condition.height_max ? '至' + data.spouse_condition.height_max + "cm" : 'cm以上'),
       ],
       [
-        data.spouse_condition.income_min ? '收入' + data.spouse_condition.income_min + "元/月以上" : '收入不限',
-      ],
-      [
-        data.spouse_condition.education_min ? education_map[data.spouse_condition.education_min] + "及以上" : '学历不限',
+        data.spouse_condition.income_min ?  Number(data.spouse_condition.income_min / 1000) + "K以上" : '收入不限',data.spouse_condition.education_min ? education_map[data.spouse_condition.education_min] + "及以上" : '学历不限',
       ],
     ];
 
+    var income_map = {
+      1: '2K~6K', 
+      2: '6K~10W', 
+      3: '1W~1.5W', 
+      4: '1.5W~2W', 
+      5: '2W~5W', 
+      6: '5W以上',
+    }
 
     // if (data.spouse_condition.in_come) {
     //   spouse_condition.push(data.spouse_condition.income_min ? '收入' + data.spouse_condition.income_min + "元/月以上" : '收入不限')
@@ -95,9 +100,8 @@ Page({
         "type" : "flex",
         "title" : "基本信息",
         "flex" : [
-          [data.height + "cm", education_map[data.education]],
-          [age, data.profession],
-          [data.university],
+          [data.height + "cm", education_map[data.education], age, income_map[data.income]],
+          [data.profession, data.university],
         ],
       },
       {
