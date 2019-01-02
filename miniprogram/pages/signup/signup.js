@@ -76,6 +76,7 @@ Page({
               success: function(res) {
                 that.setData({
                   wechatUserInfo: res.userInfo,
+                  defaultNickName: res.userInfo.nickName,
                 })
                 console.log(res.userInfo)
               }
@@ -89,7 +90,12 @@ Page({
         }
       })
     },
-
+    getPhoneNumber(e) {
+      console.log(e.detail.encryptedData)
+      this.setData({
+        // phone: e.detail.encryptedData
+      })
+    },
     onReady: function () {
         this.checkAuth()
         // var now = new Date()
@@ -112,6 +118,7 @@ Page({
         this.setData({
             ageMinArray:age,
             ageMaxArray:age,
+            // phone: 13322224444,
         })
     },
 
@@ -184,7 +191,7 @@ Page({
         const rules = {
           nick_name: {
             required: true,
-            minlength:4
+            minlength:1
           },
           wechat_id: {
             required: true,
@@ -225,7 +232,7 @@ Page({
         const messages = {
           nick_name: {
             required: '请填写昵称',
-            minlength:'请输入正确的昵称，至少4个字符'
+            minlength:'请输入正确的昵称，至少1个字符'
           },
           wechat_id: {
             required: '请填写微信号',

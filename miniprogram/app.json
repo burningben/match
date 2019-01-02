@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/match/match",
     "pages/signup/signup",
+    "pages/match/match",
     "pages/provision/provision",
     "pages/auth/auth"
   ],
